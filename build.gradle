@@ -64,7 +64,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 
 	//MySQL
-	implementation 'mysql:mysql-connector-java:8.0.28'
+	implementation group: 'com.mysql', name: 'mysql-connector-j', version: '8.3.0'
 
 	//테스트용 H2
 	implementation 'com.h2database:h2'
