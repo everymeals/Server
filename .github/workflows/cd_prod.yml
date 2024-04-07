@@ -76,8 +76,8 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_KEY }}
           script: |
-            docker stop dev
-            docker rm dev
+            docker stop dev || true
+            docker rm dev || true
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPOSITORY}}
             sudo docker run -d --name dev -v /var/log/app:/var/log/app -v /etc/localtime:/etc/localtime:ro -e TZ=Asia/Seoul -e ENVIRONMENT_VALUE=-Dspring.profiles.active=prod -p 8085:8080 ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_REPOSITORY}}:latest
             docker rmi -f $(docker images -f "dangling=true" -q)
